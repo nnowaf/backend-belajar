@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdusenService {
@@ -18,6 +19,10 @@ public class ProdusenService {
         return dao.findAll();
     }
 
+    public Optional<Produsen> findById(Integer id) {
+        return dao.findById(id);
+    }
+
     public ProdusenDTO.New save(ProdusenDTO.New produsen) {
         return dao.save(produsen);
     }
@@ -25,6 +30,7 @@ public class ProdusenService {
     public ProdusenDTO.Update update(ProdusenDTO.Update produsen) {
         return dao.update(produsen);
     }
+
 
     public void delete(Integer id) {
         dao.delete(id);

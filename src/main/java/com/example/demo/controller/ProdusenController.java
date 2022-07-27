@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produsen")
@@ -22,6 +23,15 @@ public class ProdusenController {
     @GetMapping("/list")
     public List<Produsen> findAll() {
         return service.findAll();
+    }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<?> findById(
+            @PathVariable("id")
+            Integer id
+    ) {
+        Optional<Produsen> response = service.findById(id);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/save")
