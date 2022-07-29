@@ -81,7 +81,7 @@ public class TransaksiDAO {
                 "\tp2.nama as produsen,\n" +
                 "\tp.harga as harga,\n" +
                 "\tt.kuantitas as kuantitas,\n" +
-                "\tsum(p.harga) as totalHarga\n" +
+                "\t(harga * kuantitas) as totalHarga\n" +
                 "from\n" +
                 "\ttransaksi t, produk p , produsen p2 \n" +
                 "where t.id =:id\n" +
