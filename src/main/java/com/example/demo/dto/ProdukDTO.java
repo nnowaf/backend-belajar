@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.Produsen;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,13 +18,13 @@ public class ProdukDTO {
         @NotNull
         @NotEmpty
         private String nama;
-
         @NotNull
         @NotEmpty
         private String jenis;
-
         @NotNull
         private Integer berat;
+        @NotNull
+        private Produsen produsen;
     }
 
     @Data
@@ -32,17 +33,15 @@ public class ProdukDTO {
     public static class Update {
         @NotNull
         private Integer id;
-
         @NotNull
         @NotEmpty
         private String nama;
-
         @NotNull
         @NotEmpty
         private String jenis;
-
         @NotNull
         private Integer berat;
-
+        @NotNull
+        private Produsen produsen;
     }
 }

@@ -12,4 +12,5 @@ public class Produk {
     private String nama;
     private String jenis;
     private Integer berat;
+    private Produsen produsen;
 }
