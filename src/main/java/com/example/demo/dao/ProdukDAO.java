@@ -30,6 +30,7 @@ public class ProdukDAO {
                 "\tp.nama as produkNama,\n" +
                 "\tp.jenis as produkJenis,\n" +
                 "\tp.berat as produkBerat,\n" +
+                "\tp.harga as produkHarga,\n" +
                 "\tp2.id as produsenId,\n" +
                 "\tp2.nama as produsenNama,\n" +
                 "\tp2.kode as produsenKode,\n" +
@@ -47,6 +48,7 @@ public class ProdukDAO {
                 produk.setNama(rs.getString("produkNama"));
                 produk.setJenis(rs.getString("produkJenis"));
                 produk.setBerat(rs.getInt("produkBerat"));
+                produk.setHarga(rs.getDouble("produkHarga"));
 
                 Produsen produsen = new Produsen();
                 produsen.setId(rs.getInt("produsenId"));
@@ -67,6 +69,7 @@ public class ProdukDAO {
                 "\tp.nama as produkNama,\n" +
                 "\tp.jenis as produkJenis,\n" +
                 "\tp.berat as produkBerat,\n" +
+                "\tp.harga as produkHarga,\n" +
                 "\tp2.id as produsenId,\n" +
                 "\tp2.nama as produsenNama,\n" +
                 "\tp2.kode as produsenKode,\n" +
@@ -88,6 +91,7 @@ public class ProdukDAO {
                 produk.setNama(rs.getString("produkNama"));
                 produk.setJenis(rs.getString("produkJenis"));
                 produk.setBerat(rs.getInt("produkBerat"));
+                produk.setHarga(rs.getDouble("produkHarga"));
 
                 Produsen produsen = new Produsen();
                 produsen.setId(rs.getInt("produsenId"));
@@ -104,14 +108,15 @@ public class ProdukDAO {
     //input data ke database
     public ProdukDTO.New save(ProdukDTO.New produk) {
         String query = "INSERT INTO produk\n" +
-                "(nama, jenis, berat, produsen_id)\n" +
-                "VALUES(:nama, :jenis, :berat, :produsenId);\n";
+                "(nama, jenis, berat, produsen_id, harga)\n" +
+                "VALUES(:nama, :jenis, :berat, :produsenId, :harga);\n";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
         map.addValue("nama", produk.getNama());
         map.addValue("jenis", produk.getJenis());
         map.addValue("berat", produk.getBerat());
         map.addValue("produsenId", produk.getProdusen().getId());
+        map.addValue("harga", produk.getHarga());
         jbdcTemplate.update(query, map);
         return produk;
     }
@@ -119,7 +124,7 @@ public class ProdukDAO {
     //update data ke database
     public ProdukDTO.Update update(ProdukDTO.Update produk) {
         String query = "UPDATE produk\n" +
-                "SET nama=:nama, jenis=:jenis, berat=:berat, produsen_id=:produsenId\n" +
+                "SET nama=:nama, jenis=:jenis, berat=:berat, produsen_id=:produsenId, harga=:harga\n" +
                 "WHERE id=:id\n";
 
         MapSqlParameterSource map = new MapSqlParameterSource();
@@ -128,6 +133,7 @@ public class ProdukDAO {
         map.addValue("jenis", produk.getJenis());
         map.addValue("berat", produk.getBerat());
         map.addValue("produsenId", produk.getProdusen().getId());
+        map.addValue("harga", produk.getHarga());
         jbdcTemplate.update(query, map);
         return produk;
     }

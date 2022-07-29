@@ -25,6 +25,8 @@ public class ProdukDTO {
         private Integer berat;
         @NotNull
         private Produsen produsen;
+        @NotNull
+        private Double harga;
     }
 
     @Data
@@ -43,5 +45,7 @@ public class ProdukDTO {
         private Integer berat;
         @NotNull
         private Produsen produsen;
+        @NotNull
+        private Double harga;
     }
 }
